@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "version": "1.0.0",
+    "name": "Discord OAuth Privacy Rewrites",
+    "background": {
+        "service_worker": "assets/background.js",
+        "type": "module"
+    },
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "scripting",
+        "storage",
+        "tabs"
+    ],
+    "host_permissions": [
+        "https://discord.com/oauth2/*",
+        "https://*.discord.com/oauth2/*"
+    ],
+    "icons": {
+        "32": "icon32.png"
+    }
+}
