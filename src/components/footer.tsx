@@ -1,6 +1,6 @@
 import { ReactNode }from "react";
 import { BsDiscord, BsGithub } from "react-icons/bs";
-
+import { SiKofi } from "react-icons/si";
 
 export function Footer() {
     return (
@@ -13,6 +13,7 @@ export function Footer() {
             </ExternalSite>
 
             <div className="ml-auto" />
+
             <ExternalSite
                 href="https://wamellow.com?utm_source=chrome-extension"
                 icon={
@@ -37,6 +38,10 @@ export function Footer() {
                     My Portfolio
             </ExternalSite>
 
+            <ExternalSite
+                href="https://ko-fi.com/mwlica"
+                icon={<SiKofi className="size-4" />}
+            />
             <ExternalSite
                 href="https://github.com/Luna-devv/discord-oauth-privacy-rewrites"
                 icon={<BsGithub className="size-5" />}
