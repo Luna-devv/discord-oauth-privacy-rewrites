@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { HiX } from "react-icons/hi";
 
 export function Checkbox({
-    checked,
+    initial,
     onChange
 }: {
-    checked: boolean,
+    initial: boolean,
     onChange: (checked: boolean) => void;
 }) {
+    const [checked, setChecked] = useState(initial);
 
     function update() {
+        setChecked(!checked);
         onChange(!checked);
     }
 

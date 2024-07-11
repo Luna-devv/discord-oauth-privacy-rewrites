@@ -1,7 +1,9 @@
 import { OAuth2Scopes } from "discord-api-types/v10";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HiBan, HiExclamation } from "react-icons/hi";
 
+import { cn } from "../utils/cn";
+import { rewriteUrl } from "../utils/rewrite-url";
 import { Checkbox } from "./input/checkbox";
 
 const scopes = Object.values(OAuth2Scopes);
@@ -22,31 +24,38 @@ const pleaseDisable = [
 ] as OAuth2Scopes[];
 
 export function ScopeList() {
-    const [initital, setInitital] = useState<Record<string, string>>({});
+    const [initial, setInitial] = useState<Record<string, string>>({});
+    const [error, setError] = useState<string | null>(null);
 
     chrome.storage.sync.get(
         scopes.map((scope) => `scope-${scope}`),
         (data) => {
-            setInitital(data);
+            setInitial(data);
+
+            if (!chrome.runtime.lastError) return;
+            setError(chrome.runtime.lastError.message!);
         }
     );
 
     return (
         <div className="space-y-2">
+            {error &&
+                <ErrorBanner message={error} />
+            }
+
             <div className="grid grid-cols-2 w-full">
-                {Object.keys(initital).length
-                    ?
-                    scopes
+                {Object.keys(initial).length
+                    ? scopes
                         .sort((a, b) => a.localeCompare(b))
                         .map((scope) => (
                             <ScopeToggle
                                 key={scope}
                                 scope={scope}
-                                initial={initital[`scope-${scope}`] === "disabled"}
+                                initial={initial[`scope-${scope}`] === "disabled"}
+                                onError={(error) => setError(error.message!)}
                             />
                         ))
-                    :
-                    <></>
+                    : <></>
                 }
             </div>
 
@@ -55,42 +64,55 @@ export function ScopeList() {
     );
 }
 
+function ErrorBanner({
+    message
+}: {
+    message: string;
+}) {
+    return (
+        <div className="bg-danger/40 border border-danger">
+            {message}
+        </div>
+    );
+}
+
 function ScopeToggle({
     initial,
-    scope
+    scope,
+    onError
 }: {
     initial: boolean;
-    scope: OAuth2Scopes
+    scope: OAuth2Scopes;
+    onError: (error: chrome.runtime.LastError) => void;
 }) {
+    const [disabled, setDisabled] = useState(initial);
     const key = `scope-${scope}` as const;
 
-    const [locked, setLocked] = useState(true);
-    const [disabled, setDisabled] = useState(initial);
-
-    function update(checked: boolean) {
-        setDisabled(checked);
-    }
-
-    useEffect(() => {
-        if (locked) return;
-
+    function update(checked: boolean){
         chrome.storage.sync.set({
-            [key]:  disabled ? "disabled" : "enabled"
-        });
-    }, [disabled]);
+            [key]:  checked ? "disabled" : "enabled"
+        }, () => {
+            if (chrome.runtime.lastError) {
+                onError(chrome.runtime.lastError);
+                return;
+            }
 
-    useEffect(() =>{
-        setTimeout(() => setLocked(false), 500);
-    }, []);
+            setDisabled(checked);
+
+            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                void rewriteUrl(tabs[0]);
+            });
+        });
+    }
 
     return (
         <div className="flex gap-1 items-center">
             <Checkbox
-                checked={disabled}
+                initial={initial}
                 onChange={update}
             />
 
-            <span className={disabled ? "line-through opacity-75" : ""}>
+            <span className={cn(disabled && "line-through opacity-75")}>
                 {scope}
             </span>
 
