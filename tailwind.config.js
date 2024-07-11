@@ -7,7 +7,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                blurple: "rgb(84, 98, 240)"
+                blurple: "rgb(84, 98, 240)",
+                success: "rgb(87, 242, 135)",
+                danger: "rgb(237, 66, 69)"
             }
         }
     },

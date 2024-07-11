@@ -103,7 +103,7 @@ function ScopeToggle({
 
             {pleaseDisable.includes(scope) &&
                 <HiExclamation
-                    className="text-red-400 relative top-[1px]"
+                    className="text-danger relative top-[1px]"
                     title="omg please disable"
                 />
             }
@@ -113,14 +113,14 @@ function ScopeToggle({
 
 function Legend() {
     return (
-        <div>
+        <div className="text-neutral-50">
             <div className="flex gap-1 items-center">
-                <HiBan className="text-[#5865f2] size-4"/>
+                <HiBan className="text-blurple size-4"/>
                 <span>Might break commonly used apps</span>
             </div>
 
             <div className="flex gap-1 items-center">
-                <HiExclamation className="text-red-400 size-4" />
+                <HiExclamation className="text-danger size-4 relative top-[1px]" />
                 <span>You should really disable this for the sake of your privacy</span>
             </div>
         </div>
