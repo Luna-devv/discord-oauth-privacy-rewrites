@@ -5,7 +5,6 @@ chrome.tabs.onCreated.addListener((tab) => {
 });
 
 chrome.tabs.onUpdated.addListener((_id, changeInfo, tab) => {
-    console.log(changeInfo);
     if (changeInfo.status !== "loading") return;
     void rewriteUrl(tab);
 });
