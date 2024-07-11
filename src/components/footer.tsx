@@ -1,48 +1,46 @@
 import { ReactNode }from "react";
 import { BsDiscord, BsGithub } from "react-icons/bs";
 
-import { Button } from "./default/button";
 
 export function Footer() {
     return (
-        <div className="flex items-center pb-4">
-            <Button
-                icon={<BsDiscord />}
+        <div className="flex items-center gap-1 pb-2">
+            <ExternalSite
                 href="https://discord.gg/yYd6YKHQZH"
+                icon={<BsDiscord className="ml-1" />}
             >
                 Support
-            </Button>
+            </ExternalSite>
 
-            <div className="ml-auto flex items-center gap-1">
-                <ExternalSite
-                    href="https://wamellow.com?utm_source=chrome-extension"
-                    icon={
-                        <img
-                            src="https://wamellow.com/waya-v3.jpg"
-                            className="size-5 rounded-full"
-                        />
-                    }
-                >
+            <div className="ml-auto" />
+            <ExternalSite
+                href="https://wamellow.com?utm_source=chrome-extension"
+                icon={
+                    <img
+                        src="https://wamellow.com/waya-v3.jpg"
+                        className="size-5 rounded-full"
+                    />
+                }
+            >
                     Wamellow
-                </ExternalSite>
+            </ExternalSite>
 
-                <ExternalSite
-                    href="https://lunish.nl"
-                    icon={
-                        <img
-                            src="https://avatars.githubusercontent.com/u/71079641?v=4"
-                            className="size-5 rounded-full"
-                        />
-                    }
-                >
+            <ExternalSite
+                href="https://lunish.nl"
+                icon={
+                    <img
+                        src="https://avatars.githubusercontent.com/u/71079641?v=4"
+                        className="size-5 rounded-full"
+                    />
+                }
+            >
                     My Portfolio
-                </ExternalSite>
+            </ExternalSite>
 
-                <ExternalSite
-                    href="https://github.com/Luna-devv/discord-oauth-privacy-rewrites"
-                    icon={<BsGithub className="size-5" />}
-                />
-            </div>
+            <ExternalSite
+                href="https://github.com/Luna-devv/discord-oauth-privacy-rewrites"
+                icon={<BsGithub className="size-5" />}
+            />
         </div>
     );
 }

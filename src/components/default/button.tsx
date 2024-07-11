@@ -1,21 +1,31 @@
+import { ButtonStyle } from "discord-api-types/v10";
 import { ReactNode } from "react";
 
+import { cn } from "../../utils/cn";
 import { BaseProps } from "./types";
 
 interface Props extends BaseProps {
     icon: ReactNode;
-    href: string;
+    onClick: () => void;
+    style?: ButtonStyle;
 }
 
 export function Button({
     children,
     icon,
-    href
+    style = ButtonStyle.Primary,
+    ...props
 }: Props) {
     return (
         <button
-            className="text-medium bg-blurple text-white px-4 py-2 rounded-md flex gap-1.5 items-center"
-            onClick={() => window.open(href)}
+            className={cn(
+                "text-medium text-white px-4 py-2 rounded-md flex gap-1.5 items-center",
+                (style === ButtonStyle.Link || style === ButtonStyle.Secondary) && "bg-[#1e1f22]",
+                style === ButtonStyle.Danger && "bg-danger",
+                style === ButtonStyle.Success && "bg-green",
+                style === ButtonStyle.Primary && "bg-blurple"
+            )}
+            {...props}
         >
             {icon}
             <span>{children}</span>

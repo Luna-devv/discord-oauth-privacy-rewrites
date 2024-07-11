@@ -6,6 +6,7 @@ const MATCH_URL = /^https?:\/\/((canary|ptb)\.)?discord\.com\/oauth2\/authorize/
 
 export async function rewriteUrl(tab: chrome.tabs.Tab) {
     if (!tab.id || !tab.url || !tab.url.match(MATCH_URL)) return;
+    if (await isPaused()) return;
 
     const scopes = getScopes(tab.url);
     const settings = await getSettings();
@@ -35,4 +36,13 @@ function appendScope(url: URL, scope: string) {
 
     url.search = params.toString();
     return url.toString();
+}
+
+async function isPaused(): Promise<boolean> {
+    return new Promise((resolve) => {
+        chrome.storage.sync.get(
+            "paused",
+            (data) => resolve(data.paused || false)
+        );
+    });
 }
