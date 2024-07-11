@@ -1,12 +1,8 @@
-import { ReactNode } from "react";
+import { BaseProps } from "./types";
 
-interface Props {
-    children: ReactNode
-}
-
-export function H1 ({
+export function H1({
     children
-}: Props) {
+}: BaseProps) {
     return (
         <h1 className="text-2xl font-semibold text-white">
             {children}
@@ -14,9 +10,9 @@ export function H1 ({
     );
 }
 
-export function H2 ({
+export function H2({
     children
-}: Props) {
+}: BaseProps) {
     return (
         <h2 className="text-xl font-medium text-white">
             {children}
