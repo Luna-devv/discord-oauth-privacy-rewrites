@@ -1,30 +1,10 @@
-# React + TypeScript + Vite
+[![](https://img.shields.io/discord/828676951023550495?color=5865F2&logo=discord&logoColor=white)](https://lunish.nl/support)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I6AFVAP)
 
-Currently, two official plugins are available:
+# Discrd OAuth Scope Rewrites
+Remove privacy invasive OAuth Scopes when authorizing Discord Apps. This extension allows you to choose which scopes should be allowed and which should be removed. Please note that you should de-authorize all Apps in the Discord App before using this extension.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![Download the Chrome Extension](https://vencord.dev/assets/chrome-button.png)](https://chromewebstore.google.com/detail/fbmacgagfelboicgcaodnnfgabdlohjg)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![Untitled design](https://github.com/user-attachments/assets/0bf32ac1-fb8e-4b87-935c-2245fd109907)
