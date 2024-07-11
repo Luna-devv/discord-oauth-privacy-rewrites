@@ -96,7 +96,7 @@ function ScopeToggle({
 
             {doNotDisable.includes(scope) &&
                 <HiBan
-                    className="text-violet-400"
+                    className="text-blurple"
                     title="Disabling this may break apps"
                 />
             }
@@ -115,7 +115,7 @@ function Legend() {
     return (
         <div>
             <div className="flex gap-1 items-center">
-                <HiBan className="text-violet-400 size-4"/>
+                <HiBan className="text-[#5865f2] size-4"/>
                 <span>Might break commonly used apps</span>
             </div>
 

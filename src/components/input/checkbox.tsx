@@ -14,12 +14,12 @@ export function Checkbox({
 
     return (
         <button
-            className="bg-neutral-700 size-4 rounded flex items-center justify-center cursor-pointer"
+            className="border border-[#80848e] size-4 rounded flex items-center justify-center cursor-pointer"
             onClick={update}
             role="checkbox"
         >
             {checked &&
-                <HiX className="text-violet-400 cursor-pointer" />
+                <HiX className="text-white cursor-pointer" />
             }
         </button>
     );
