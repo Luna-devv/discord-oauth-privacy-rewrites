@@ -19,11 +19,11 @@ export function Button({
     return (
         <button
             className={cn(
-                "text-medium text-white px-4 py-2 rounded-md flex gap-1.5 items-center",
-                (style === ButtonStyle.Link || style === ButtonStyle.Secondary) && "bg-[#1e1f22]",
-                style === ButtonStyle.Danger && "bg-danger",
-                style === ButtonStyle.Success && "bg-green",
-                style === ButtonStyle.Primary && "bg-blurple"
+                "text-medium text-white px-4 py-2 rounded-md flex gap-1.5 items-center duration-200",
+                (style === ButtonStyle.Link || style === ButtonStyle.Secondary) && "bg-[#3b3d44] hover:bg-[#35373c]",
+                style === ButtonStyle.Danger && "bg-danger hover:bg-danger/80",
+                style === ButtonStyle.Success && "bg-green hover:bg-green/80",
+                style === ButtonStyle.Primary && "bg-blurple hover:bg-blurple/80"
             )}
             {...props}
         >

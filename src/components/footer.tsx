@@ -61,7 +61,7 @@ function ExternalSite({
 }) {
     return (
         <a
-            className="rounded-2xl bg-[#1e1f22] p-1.5 text-white cursor-pointer flex items-center gap-1.5"
+            className="rounded-2xl bg-[#1e1f22] hover:bg-[#1e1f22]/80 duration-200 p-1.5 text-white cursor-pointer flex items-center gap-1.5"
             href={href}
             target="_blank"
         >
