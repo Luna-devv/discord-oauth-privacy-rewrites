@@ -3,14 +3,12 @@
     "version": "1.0.0",
     "name": "Discord OAuth Privacy Rewrites",
     "background": {
-        "service_worker": "assets/background.js",
-        "type": "module"
+        "service_worker": "assets/background.js"
     },
     "action": {
         "default_popup": "index.html"
     },
     "permissions": [
-        "scripting",
         "storage",
         "tabs"
     ],
