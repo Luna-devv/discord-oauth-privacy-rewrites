@@ -68,7 +68,7 @@ export function Pause() {
                 }
                 {paused
                     ? "Rewrites Disabled — Be careful!"
-                    : "Rewrites Enabled — You're save!"
+                    : "Rewrites Enabled — You're safe!"
                 }
             </div>
 
